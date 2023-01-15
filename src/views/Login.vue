@@ -1,8 +1,8 @@
 <template>
   <div class="h-screen flex flex-col items-center justify-center">
     <form @submit.prevent="onSubmit">
-      <Input type="email" label="E-mail" v-model="message" required />
-      <Input type="password" label="Password" v-model="message" required />
+      <FormInput type="email" label="E-mail" v-model="message" required />
+      <FormInput type="password" label="Password" v-model="message" required />
 
       <button
         type="submit"
@@ -15,26 +15,25 @@
 </template>
 
 <script>
-import Input from "@/components/FormInput.vue"
+import FormInput from '@/components/FormInput.vue';
 
 export default {
-  name: "HomePage",
+  name: 'LoginPage',
   data: () => ({
     form: {
-      email: "",
-      password: "",
-    }
+      email: '',
+      password: '',
+    },
   }),
   components: {
-    Input
+    FormInput,
   },
   methods: {
     onSubmit() {
-      console.log("opa");
-      this.$router.push("/")
-    }
-  }
-}
+      this.$router.push('/');
+    },
+  },
+};
 </script>
 
 <style>
