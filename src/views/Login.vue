@@ -1,8 +1,8 @@
 <template>
   <div class="h-screen flex flex-col items-center justify-center">
     <form @submit.prevent="onSubmit">
-      <FormInput type="email" label="E-mail" v-model="message" required />
-      <FormInput type="password" label="Password" v-model="message" required />
+      <form-input type="email" label="E-mail" v-model="message" required />
+      <form-input type="password" label="Password" v-model="message" required />
 
       <button
         type="submit"
