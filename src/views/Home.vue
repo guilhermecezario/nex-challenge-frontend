@@ -3,12 +3,12 @@
     <div class="flex justify-between items-center mb-6">
       <h1 class="text-xl font-semibold">Listagem de usuários</h1>
 
-      <a
-        href="/users"
+      <router-link
+        to="/users"
         class="px-5 py-2.5 bg-white rounded-lg border border-gray-200 hover:bg-gray-100"
       >
         Criar usuário
-      </a>
+      </router-link>
     </div>
 
     <list-users :users="users"/>

@@ -4,6 +4,7 @@ import Login from '@/views/Login.vue';
 import Home from '@/views/Home.vue';
 
 import UsersCreate from '@/views/Users/Create.vue';
+import UsersUpdate from '@/views/Users/Update.vue';
 
 const routes = [
   {
@@ -14,6 +15,9 @@ const routes = [
   },
   {
     path: '/users', component: UsersCreate,
+  },
+  {
+    path: '/users/:id', component: UsersUpdate,
   },
 ];
 

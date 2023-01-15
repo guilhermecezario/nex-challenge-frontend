@@ -14,10 +14,10 @@
         <td class="border p-4">{{user.email}}</td>
         <td class="border p-4">{{user.phone}}</td>
         <td class="border p-4">
-          <a
-            :href="`/users/${user.id}`"
+          <router-link
+            :to="`/users/${user.id}`"
             class="underline text-blue-500 hover:text-blue-600"
-          >Editar</a>
+          >Editar</router-link>
         </td>
       </tr>
     </tbody>
