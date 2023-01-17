@@ -11,6 +11,18 @@
       </router-link>
     </div>
 
+    <form @submit.prevent="initialize" class="flex justify-end gap-x-1 items-center mb-6">
+      <form-input type="text" label="E-mail" v-model="form.email" />
+      <form-input type="text" label="Nome" v-model="form.name" />
+
+      <button
+        type="submit"
+        class="px-4 py-2.5 bg-white rounded-lg border border-gray-200 hover:bg-gray-100"
+      >
+        Buscar
+      </button>
+    </form>
+
     <list-users :users="users"/>
 
     <div class="h-full flex justify-end mt-3">
@@ -35,6 +47,10 @@ import { useToast } from 'vue-toastification';
 export default {
   name: 'HomePage',
   data: () => ({
+    form: {
+      name: '',
+      email: '',
+    },
     users: [],
   }),
   components: {
@@ -51,7 +67,7 @@ export default {
   methods: {
     async initialize() {
       try {
-        const response = await usersService.getAll();
+        const response = await usersService.getAll(this.form.name, this.form.email);
 
         this.users = response.data;
       } catch (error) {

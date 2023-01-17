@@ -5,8 +5,12 @@ class UsersService {
     this.instance = instance;
   }
 
-  getAll() {
-    return this.instance.get('users');
+  getAll(name, email) {
+    return this.instance.get('users', {
+      params: {
+        name, email,
+      },
+    });
   }
 
   findOne(id) {
