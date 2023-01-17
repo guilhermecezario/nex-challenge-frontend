@@ -8,6 +8,10 @@ class UsersService {
   getAll() {
     return this.instance.get('users');
   }
+
+  create(user) {
+    return this.instance.post('users', user);
+  }
 }
 
 export default new UsersService();
