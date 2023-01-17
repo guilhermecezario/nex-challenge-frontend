@@ -9,8 +9,16 @@ class UsersService {
     return this.instance.get('users');
   }
 
+  findOne(id) {
+    return this.instance.get(`users/${id}`);
+  }
+
   create(user) {
     return this.instance.post('users', user);
+  }
+
+  update(id, user) {
+    return this.instance.put(`users/${id}`, user);
   }
 }
 

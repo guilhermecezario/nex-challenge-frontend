@@ -13,10 +13,12 @@ import routes from './routes';
 import store from './store';
 
 import FormInput from './components/FormInput.vue';
+import FormSelect from './components/FormSelect.vue';
 
 const app = createApp(App);
 
 app.component('FormInput', FormInput);
+app.component('FormSelect', FormSelect);
 
 app.use(routes);
 

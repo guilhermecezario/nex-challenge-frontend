@@ -9,22 +9,7 @@
       <form-input type="text" label="Nome" v-model="form.name" required />
       <form-input type="number" label="Telefone" v-model="form.phone" required />
 
-      <div class="mb-3">
-        <label
-          for="permission"
-          class="block mb-1 text-sm font-medium text-gray-900"
-        >
-          Permissão
-          <select
-            id="permission"
-            class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5"
-            v-model="form.permission"
-          >
-            <option value="admin">Admin</option>
-            <option value="standerd">Standerd</option>
-          </select>
-        </label>
-      </div>
+      <form-select label="Permissão" v-model="form.permission" :options="permissions" required />
 
       <button
         type="submit"
@@ -54,6 +39,16 @@ export default {
       phone: '',
       permission: 'standerd',
     },
+    permissions: [
+      {
+        value: 'admin',
+        text: 'Admin',
+      },
+      {
+        value: 'standerd',
+        text: 'Standerd',
+      },
+    ],
   }),
   setup() {
     const toast = useToast();
@@ -66,6 +61,7 @@ export default {
         await usersService.create(this.form);
 
         this.toast.success('Usuário criado com sucesso');
+        this.$router.push('/');
       } catch (error) {
         if (typeof error.response.data.message === 'object') {
           error.response.data.message.forEach((m) => {
