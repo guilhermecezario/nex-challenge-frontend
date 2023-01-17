@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// import store from '../store';
+import store from '../store';
 
 // create a new axios instance
 const instance = axios.create({
@@ -8,12 +8,14 @@ const instance = axios.create({
 });
 
 // before a request is made start the nprogress
-// instance.interceptors.request.use((config) => {
-//   if (store.getters['user/loggedIn']) {
-//     config.headers.Authorization = `${store.getters['user/token']}`;
-//   }
+instance.interceptors.request.use((config) => {
+  const configuration = config;
 
-//   return config;
-// });
+  if (store.getters['user/loggedIn']) {
+    configuration.headers.Authorization = `Bearer ${store.getters['user/token']}`;
+  }
+
+  return configuration;
+});
 
 export default instance;

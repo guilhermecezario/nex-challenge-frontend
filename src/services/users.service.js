@@ -5,8 +5,8 @@ class UsersService {
     this.instance = instance;
   }
 
-  getAll(page) {
-    return this.instance.get(`api/posts.json?page=${page}`);
+  getAll() {
+    return this.instance.get('users');
   }
 }
 

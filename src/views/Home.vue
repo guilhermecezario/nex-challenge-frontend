@@ -18,26 +18,35 @@
 <script>
 import ListUsers from '@/components/ListUsers.vue';
 
+import usersService from '@/services/users.service';
+import { useToast } from 'vue-toastification';
+
 export default {
   name: 'HomePage',
   data: () => ({
-    users: [
-      {
-        id: '1',
-        name: 'Guilherme',
-        email: 'guilherme.cezario@nextar.com.br',
-        phone: '011955551234',
-      },
-      {
-        id: '1',
-        name: 'Joao',
-        email: 'joao.pedro@nextar.com',
-        phone: '011955551234',
-      },
-    ],
+    users: [],
   }),
   components: {
     ListUsers,
+  },
+  setup() {
+    const toast = useToast();
+
+    return { toast };
+  },
+  mounted() {
+    this.initialize();
+  },
+  methods: {
+    async initialize() {
+      try {
+        const response = await usersService.getAll();
+
+        this.users = response.data;
+      } catch (error) {
+        this.toast.error('Erro ao buscar listagem de usuários');
+      }
+    },
   },
 };
 </script>

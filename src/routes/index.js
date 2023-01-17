@@ -33,6 +33,8 @@ const routesAuth = ['Login'];
 router.beforeEach((to, from, next) => {
   if (routesAuth.includes(to.name) && store.getters['user/loggedIn']) {
     next({ name: 'Home' });
+  } else if (!routesAuth.includes(to.name) && !store.getters['user/loggedIn']) {
+    next({ name: 'Login' });
   } else {
     next();
   }
