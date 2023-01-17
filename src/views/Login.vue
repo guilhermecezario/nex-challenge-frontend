@@ -1,5 +1,7 @@
 <template>
   <div class="h-screen flex flex-col items-center justify-center">
+    <img src="../assets/logo.svg" alt="" class="h-20 w-20 mb-10">
+
     <form @submit.prevent="onSubmit">
       <form-input type="email" label="E-mail" v-model="form.email" required />
       <form-input type="password" label="Password" v-model="form.password" required />

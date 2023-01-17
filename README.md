@@ -1,24 +1,30 @@
-# frontend
+# Challenge Nex
 
-## Project setup
+Url de produção: [nex-challenge](https://nex-challenge.guilhermecezario.dev/login).
+
+
+## Configuração do projeto
+
+1. Renomeie o arquivo [.env.example](.env.example) para `.env` e adicione as variaveis ambiente
+
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Compila e faz hot-reloads para desenvolvimento
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
+### Compila e minifica para produção
 ```
 yarn build
 ```
 
-### Lints and fixes files
+### Lints e corrige arquivos
 ```
 yarn lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Personalizar configuração
+Ver [Referência de configuração](https://cli.vuejs.org/config/).
