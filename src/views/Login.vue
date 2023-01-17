@@ -15,6 +15,10 @@
 </template>
 
 <script>
+import authService from '@/services/auth.service';
+
+import { useToast } from 'vue-toastification';
+
 export default {
   name: 'LoginPage',
   data: () => ({
@@ -23,9 +27,23 @@ export default {
       password: '',
     },
   }),
+  setup() {
+    const toast = useToast();
+
+    return { toast };
+  },
   methods: {
-    onSubmit() {
-      this.$router.push('/');
+    async onSubmit() {
+      try {
+        this.form.email = this.form.email.toLowerCase();
+
+        const response = await authService.session(this.form);
+
+        this.$store.dispatch('user/login', response.data);
+        this.$router.push('/');
+      } catch (error) {
+        this.toast.error('E-mail ou senha incorreta');
+      }
     },
   },
 };

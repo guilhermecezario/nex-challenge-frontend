@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
+import store from '@/store';
+
 import Login from '@/views/Login.vue';
 import Home from '@/views/Home.vue';
 
@@ -8,20 +10,32 @@ import UsersUpdate from '@/views/Users/Update.vue';
 
 const routes = [
   {
-    path: '/', component: Home,
+    path: '/', component: Home, name: 'Home',
   },
   {
-    path: '/login', component: Login,
+    path: '/login', component: Login, name: 'Login',
   },
   {
-    path: '/users', component: UsersCreate,
+    path: '/users', component: UsersCreate, name: 'UsersCreate',
   },
   {
-    path: '/users/:id', component: UsersUpdate,
+    path: '/users/:id', component: UsersUpdate, name: 'UsersUpdate',
   },
 ];
 
-export default createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+
+const routesAuth = ['Login'];
+
+router.beforeEach((to, from, next) => {
+  if (routesAuth.includes(to.name) && store.getters['user/loggedIn']) {
+    next({ name: 'Home' });
+  } else {
+    next();
+  }
+});
+
+export default router;
