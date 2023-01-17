@@ -1,6 +1,6 @@
 # Challenge Nex
 
-Url de produção: [nex-challenge](https://nex-challenge.guilhermecezario.dev/login).
+Link de produção: [nex-challenge](https://nex-challenge.guilhermecezario.dev).
 
 
 ## Configuração do projeto
