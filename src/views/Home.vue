@@ -12,6 +12,17 @@
     </div>
 
     <list-users :users="users"/>
+
+    <div class="h-full flex justify-end mt-3">
+      <button
+        type="button"
+        class="px-4 py-2.5 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 text-end"
+        @click="logout"
+      >
+        Sair
+      </button>
+    </div>
+
   </div>
 </template>
 
@@ -46,6 +57,10 @@ export default {
       } catch (error) {
         this.toast.error('Erro ao buscar listagem de usuários');
       }
+    },
+    logout() {
+      this.$store.commit('user/logout');
+      this.$router.push('/login');
     },
   },
 };
